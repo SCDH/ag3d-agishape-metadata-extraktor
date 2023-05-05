@@ -5,7 +5,6 @@ use strict;
 use warnings;
 
 use Encode;
-use List::MoreUtils qw(any);
 
 ############### Helper and preparation #############
 
@@ -17,6 +16,15 @@ sub slurp {
   my $filename = shift;
   open my $fh, "<:encoding($ENCODING)", $filename or die "Unable to open file '$filename'!\n";
   return do {local $/; <$fh>};
+}
+
+# "any" predicate combinator
+sub any(&@) {
+  my ($pred, @data) = @_;
+  for (@data) {
+    return 1 if $pred->(); # uses $_
+  }
+  return 0;
 }
 
 # Headers to ignore (loaded from DATA section at end of file)
