@@ -16,7 +16,7 @@ Extract data following a certain model from PDFs and create pseudo CSV from it.
     ```
 2. Invoke the extractor perl script:
     ```
-    perl meta-extract.pl somename.txt > somename.csv
+    perl meta-extrakt.pl somename.txt > somename.csv
     ```
 
 ## Author and license
