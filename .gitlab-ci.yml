@@ -1,0 +1,8 @@
+image:
+  name: perl:5.36
+
+test:
+  script:
+    - cpanm -nq --installdeps .
+    - perl Makefile.PL
+    - make test
