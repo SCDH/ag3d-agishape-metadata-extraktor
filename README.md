@@ -1,13 +1,18 @@
 # Extract metadata workflow
 
-Extract data following a certain model from PDFs and create pseudo CSV from it.
+Extract data following a certain model from PDFs and create CSV from it.
+
+There are two workflows available:
+
+1. Manual execution via command line
+2. As a webservice
 
 ## Prerequisites
 
 - `pdftotext` ([poppler-utils][pu])
 - [Perl 5][pl]
 
-## Workflow
+## Script execution
 
 0. Have your PDF file following the right format ready as `somename.pdf`
 1. Extract plain text from PDF via `pdftotext`:
@@ -18,6 +23,20 @@ Extract data following a certain model from PDFs and create pseudo CSV from it.
     ```
     perl meta-extrakt.pl somename.txt > somename.csv
     ```
+
+## Webservice
+
+1. Install dependencies via
+    ```
+    cpanm -nq --installdeps .
+    ```
+2. Run the webservice via
+    ```
+    hypnotoad webservice.pl
+    ```
+3. Navigate to that page with your browser and upload your PDF file! It's usually `http://localhost:8080/`.
+
+The webservice can be stopped with `hypnotoad -s webservice.pl`.
 
 ## Author and license
 
