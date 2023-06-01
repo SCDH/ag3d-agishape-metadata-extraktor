@@ -1,12 +1,38 @@
 #!/usr/bin/env perl
 
 use Mojolicious::Lite -signatures;
+use Mojo::File qw(path);
+use File::Temp qw(tempdir);
+use Encode;
 
+use FindBin;
+use lib "$FindBin::Bin/lib";
+use MetaEx;
+
+# Add CSV content type
+app->types->type(csv => 'text/csv');
+
+# Render the upload form
 get '/' => 'index';
 
-post '/pdf_upload' => sub ($c) {
+# Handle uploaded PDF files
+post '/pdf' => sub ($c) {
+  my $pdf   = $c->param('pdf');
+  my $name  = $pdf->filename;
 
-} => 'pdf_upload';
+  # Move to temporary directory
+  my $dir       = path(tempdir(CLEANUP => 1));
+  my $pdf_file  = $dir->child($name);
+  $pdf->move_to($pdf_file);
+
+  # Extract CSV data via external command and MetaEx
+  my $txt = decode 'UTF-8' => qx(pdftotext $pdf_file -);
+  my $csv = MetaEx->new(input => $txt)->to_csv();
+
+  # Render as CSV download
+  $c->res->headers->content_disposition("attachment; filename=$name.csv;");
+  $c->render(data => $csv, format => 'csv');
+};
 
 app->start;
 __DATA__

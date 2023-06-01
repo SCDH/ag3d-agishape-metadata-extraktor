@@ -17,6 +17,7 @@ WriteMakefile(
     'List::MoreUtils' => 0,       # Any version works
     'Text.CSV'        => 2,
     'Mojolicious'     => 9,
+    'File::Temp'      => 0.23,
   },
   test              => {TESTS => 't/*.t'}
 );
