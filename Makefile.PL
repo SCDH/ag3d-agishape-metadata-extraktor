@@ -15,6 +15,7 @@ WriteMakefile(
     'Class::Tiny'     => 1.0008,
     'File::Slurp'     => 9999,
     'List::MoreUtils' => 0,       # Any version works
+    'Mojolicious'     => 9,
   },
   test              => {TESTS => 't/*.t'}
 );
