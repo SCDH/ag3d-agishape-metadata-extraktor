@@ -15,7 +15,6 @@ my $ENCODING  = 'UTF-8';
 my $filename  = $ARGV[0] // die "No filename given!\n";
 my $input     = decode($ENCODING => read_file($filename));
 my $extraktor = MetaEx->new(input => $input);
-my $csv       = $extraktor->to_csv();
-print encode($ENCODING => $csv);
+print $extraktor->to_csv();
 
 __END__

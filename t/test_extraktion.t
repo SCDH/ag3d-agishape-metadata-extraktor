@@ -13,7 +13,7 @@ my $ENCODING = 'UTF-8';
 # Load test data
 my $dir = "$FindBin::Bin/test-data";
 my $txt = decode $ENCODING => read_file "$dir/example.txt";
-my $csv = decode $ENCODING => read_file "$dir/example.csv";
+my $csv = read_file "$dir/example.csv";
 
 subtest 'Expected output for given input' => sub {
 

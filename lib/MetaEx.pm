@@ -7,10 +7,12 @@ use feature 'signatures';
 no warnings 'experimental::signatures';
 
 use List::MoreUtils qw(any);
+use Text::CSV qw(csv);
 
 use Class::Tiny {
 
   # Regular attributes
+  encoding  => 'UTF-8',
   separator => ';',
   ignore    => sub {[map {chomp; $_} <DATA>]},
 
@@ -18,6 +20,7 @@ use Class::Tiny {
   input     => sub        {die "No input given!\n"},
   _cleaned  => sub($self) {$self->preprocess()},
   _columns  => sub($self) {$self->split_columns()},
+  lines     => sub($self) {$self->columns_to_lines()},
 };
 
 sub preprocess($self) {
@@ -31,11 +34,6 @@ sub preprocess($self) {
 
   # Remove page numbers but preserve column splits
   $contents =~ s/\s*Seite \d+\s*/\n\n/g;
-
-  # Check "CSV"ability
-  my $sep = $self->separator;
-  die "File content contains separator '$sep'!\n"
-    if $contents =~ /$sep/;
   
   # Done
   return $contents;
@@ -78,15 +76,18 @@ sub split_columns($self) {
   return {left => \@left, right => \@right};
 }
 
+sub columns_to_lines($self) {
+  return [@{$self->_columns}{qw(left right)}];
+}
+
 sub to_csv($self) {
-
-  # Generate pseudo-CSV
-  my @lines = map {
-    join($self->separator => @{$self->_columns->{$_}}) . "\n"
-  } qw(left right);
-
-  # Write out
-  return join '' => @lines;
+  csv(
+    sep_char  => $self->separator,
+    encoding  => $self->encoding,
+    in        => $self->lines,
+    out       => \my $csv,
+  );
+  return $csv;
 }
 
 1; # End of MetaEx
