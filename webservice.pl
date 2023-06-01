@@ -26,6 +26,7 @@ post '/pdf' => sub ($c) {
   $pdf->move_to($pdf_file);
 
   # Extract CSV data via external command and MetaEx
+  app->log->debug("Working on $pdf_file...");
   my $txt = decode 'UTF-8' => qx(pdftotext $pdf_file -);
   my $csv = MetaEx->new(input => $txt)->to_csv();
 
