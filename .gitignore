@@ -1,6 +1,9 @@
 # Vim swap files
 *.sw?
 
+# VSCode stuff
+.vscode
+
 # Example files
 example/*
 !example/example.pdf
