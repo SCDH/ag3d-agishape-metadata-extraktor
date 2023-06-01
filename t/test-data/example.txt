@@ -1,0 +1,649 @@
+ART22T06 Planum 4; ART22T08 Planum
+3; ART22T09 Planum 2
+Verarbeitungsbericht
+20 September 2022
+
+Bezugsfläche
+>9
+9
+8
+7
+6
+5
+4
+3
+2
+1
+
+2m
+
+Fig. 1. Kamerapositionen und Bildüberlappung.
+
+Anzahl der Bilder:
+
+564
+
+Kamerastationen:
+
+549
+
+Flughöhe:
+
+1.82 m
+
+Verknüpfungspunkte:
+
+872,378
+
+Bodenauflösung:
+
+0.775 mm/pix
+
+Projektionen:
+
+3,007,137
+
+Deckungsbereich:
+
+68.4 m²
+
+Reprojektionsfehler:
+
+0.878 pix
+
+Kameramodell
+
+Auflösung
+
+Brennweite Pixelgröße
+
+NIKON D80 (18mm) 3872 x 2592 18 mm
+Tabelle 1. Kameras.
+
+Seite 2
+
+Vorkalibriert
+
+6.19 x 6.19 um Nein
+
+Kamera-Kalibrierung
+
+1 pix
+
+Fig. 2. Bildrestwerte für NIKON D80 (18mm).
+
+NIKON D80 (18mm)
+564 Bilder
+Typ
+
+Auflösung
+
+Brennweite
+
+Pixelgröße
+
+Standard
+
+3872 x 2592
+
+18 mm
+
+6.19 x 6.19 um
+
+Wert
+
+Fehler
+
+F
+
+Cx
+
+Cy
+
+K1
+
+K2
+
+K3
+
+P1
+
+P2
+
+F
+
+3039.54
+
+0.029
+
+1.00
+
+0.00
+
+-0.25
+
+-0.16
+
+0.15
+
+-0.08
+
+0.00
+
+0.04
+
+Cx
+
+5.68424
+
+0.032
+
+1.00
+
+0.00
+
+0.00
+
+0.00
+
+-0.00
+
+0.81
+
+0.02
+
+Cy
+
+-15.207
+
+0.032
+
+1.00
+
+-0.06
+
+0.01
+
+-0.01
+
+0.02
+
+0.36
+
+K1
+
+-0.159793
+
+3e-05
+
+1.00
+
+-0.97
+
+0.91
+
+0.01
+
+-0.05
+
+K2
+
+0.116968
+
+0.00011
+
+1.00
+
+-0.98
+
+-0.00
+
+-0.00
+
+K3
+
+0.0141836
+
+0.00013
+
+1.00
+
+0.00
+
+0.02
+
+P1
+
+-0.000575197
+
+2.4e-06
+
+1.00
+
+0.01
+
+P2
+
+-0.000591502
+
+1.9e-06
+
+1.00
+
+Tabelle 2. Kalibrierkoeffizienten und Korrelationsmatrix.
+
+Seite 3
+
+Bodenpasspunkte
+1 cm
+0.8 cm
+0.6 cm
+0.4 cm
+0.2 cm
+0 cm
+-0.2 cm
+-0.4 cm
+-0.6 cm
+-0.8 cm
+-1 cm
+
+6
+
+7
+
+8
+
+x 20
+3
+4
+
+2
+Passpunkte
+
+Prüfpunkte
+1
+
+2m
+
+Fig. 3. Passpunktepositionen und Fehlerabschätzung.
+Z Fehler ist durch Ellipsenfarbe dargestellt. X, Y Fehler sind durch Ellipsenform dargestellt.
+Geschätzte Passpunktepositionen sind mit schwarzen Punkten, Kontrollpunkte mit Kreuzen
+markiert.
+
+Anzahl Fehler X (cm) Fehler Y (cm) Fehler Z (cm) XY Fehler (cm) Gesamt (cm)
+7
+
+0.728393
+
+1.09817
+
+0.550525
+
+1.31778
+
+Tabelle 3. Passpunkte RMSE.
+
+Seite 4
+
+1.42815
+
+Name
+
+Fehler X (cm) Fehler Y (cm) Fehler Z (cm) Gesamt (cm) Bild (pix)
+
+1
+
+0.428021
+
+0.977192
+
+0.762344
+
+1.31121
+
+0.005 (52)
+
+2
+
+0.0681579
+
+-1.41013
+
+-0.89986
+
+1.67418
+
+0.012 (19)
+
+3
+
+-0.819132
+
+0.695546
+
+0.467263
+
+1.17179
+
+0.003 (63)
+
+4
+
+1.20245
+
+-1.6267
+
+-0.19382
+
+2.03214
+
+0.006 (53)
+
+6
+
+-0.36642
+
+-0.523671
+
+0.365321
+
+0.736176
+
+0.002 (59)
+
+7
+
+0.499536
+
+1.33918
+
+-0.578984
+
+1.54213
+
+0.003 (79)
+
+8
+
+-1.01261
+
+0.548583
+
+0.0777361
+
+1.15428
+
+0.001 (131)
+
+1.09817
+
+0.550525
+
+1.42815
+
+0.004
+
+Gesamt 0.728393
+
+Tabelle 4. Passpunkte.
+
+Seite 5
+
+Digitales Höhenmodell
+817 m
+
+816 m
+
+2m
+
+Fig. 4. Rekonstruiertes digitales Höhenmodell.
+
+Auflösung:
+
+3.1 mm/pix
+
+Punktedichte:
+
+10.4 Punkte/cm²
+
+Seite 6
+
+Verarbeitungsparameter
+Allgemein
+Kameras
+Ausgerichtete Kameras
+Markierungen
+Koordinatensystem
+Drehwinkel
+Punktwolke
+Punkte
+Effektiver Reprojektionsfehler
+Max. Reprojektionsfehler
+Mittlere Schlüsselpunktgröße
+Punktfarben
+Schlüsselpunkte
+Durchschnittliche Verknüpfungspunkt-Multiplizität
+Ausrichtungsparameter
+Genauigkeit
+Allgemeine Vorauswahl
+Referenz Vorauswahl
+Schlüsselpunktlimit
+Schlüsselpunktlimit pro Mpx
+Verknüpfungspunktelimit
+Stationäre Verküpfungspunkte ausschließen
+Geführter Bildabgleich
+Adaptive Kamera-Modellanpassung
+Zeit für Abgleich
+Speichernutzung Abgleich
+Zeit für Ausrichtung
+Speichernutzung Ausrichtung
+Erstelldatum
+Software-Version
+Dateigröße
+Tiefenbilder
+Anzahl
+Parameter für Tiefenbilderzeugung
+Qualität
+Filtermodus
+Max Nachbarn
+Verarbeitungszeit
+Speichernutzung
+Erstelldatum
+Software-Version
+Dateigröße
+Dichte Punktwolke
+Punkte
+Punktfarben
+Parameter für Tiefenbilderzeugung
+Qualität
+Filtermodus
+Max Nachbarn
+Verarbeitungszeit
+
+564
+549
+7
+Local Coordinates (m)
+Gier, Nick, Roll
+872,378 von 1,235,389
+0.114661 (0.87817 pix)
+0.349898 (33.0606 pix)
+7.06725 pix
+3 Kanäle, uint8
+Nein
+3.58209
+Mittel
+Ja
+Quelle
+500,000
+1,000
+50,000
+Ja
+Nein
+Nein
+4 Minuten 28 Sekunden
+473.96 MB
+13 Minuten 50 Sekunden
+643.55 MB
+2022:09:18 15:43:00
+1.8.0.13794
+91.10 MB
+548
+Mittel
+Sanft
+16
+11 Minuten 14 Sekunden
+725.94 MB
+2022:09:18 16:08:10
+1.8.0.13794
+560.52 MB
+11,189,515
+3 Kanäle, uint8
+Mittel
+Sanft
+16
+11 Minuten 14 Sekunden
+
+Seite 7
+
+Speichernutzung
+Parameter für Erzeugung der dichten Punktwolke
+Verarbeitungszeit
+Speichernutzung
+Erstelldatum
+Software-Version
+Dateigröße
+Modell
+Flächen
+Punkte
+Punktfarben
+Textur
+Parameter für Tiefenbilderzeugung
+Qualität
+Filtermodus
+Max Nachbarn
+Verarbeitungszeit
+Speichernutzung
+Rekonstruktionsparameter
+Oberflächenart
+Quelldaten
+Interpolation
+Strenge volumetrische Masken
+Verarbeitungszeit
+Speichernutzung
+Texturierungsparameter
+Abbildungsmodus
+Überlagerungsmodus
+Texturgröße
+Lochfüllung aktivieren
+Ghosting-Filter aktivieren
+Zeit für UV Mapping
+Speichernutzung UV-Mapping
+Zeit für Überlagerung
+Speichernutzung Überlagerung
+GPU-Speichernutzung Überlagerung
+Erstelldatum
+Software-Version
+Dateigröße
+DEM
+Größe
+Koordinatensystem
+Rekonstruktionsparameter
+Quelldaten
+Interpolation
+Verarbeitungszeit
+Speichernutzung
+Erstelldatum
+Software-Version
+Dateigröße
+Orthomosaik
+Größe
+Koordinatensystem
+Farben
+Rekonstruktionsparameter
+Überlagerungsmodus
+
+725.94 MB
+22 Minuten 31 Sekunden
+6.01 GB
+2022:09:18 16:30:42
+1.8.0.13794
+274.06 MB
+580,613
+290,944
+3 Kanäle, uint8
+8,192 x 8,192, 4 Kanäle, uint8
+Mittel
+Sanft
+16
+11 Minuten 14 Sekunden
+725.94 MB
+Frei
+Dichte Punktwolke
+An
+Nein
+3 Minuten 32 Sekunden
+6.83 GB
+Allgemein
+Mosaik
+8,192
+Ja
+Ja
+1 Minute 8 Sekunden
+549.45 MB
+2 Minuten 20 Sekunden
+2.43 GB
+1.86 GB
+2022:09:18 16:34:12
+1.8.0.13794
+101.99 MB
+4,386 x 6,457
+Local Coordinates (m)
+Dichte Punktwolke
+Aus
+4 Sekunden
+240.34 MB
+2022:09:19 02:33:29
+1.8.0.13794
+19.18 MB
+10,111 x 16,148
+Local Coordinates (m)
+3 Kanäle, uint8
+Mosaik
+
+Seite 8
+
+Oberfläche
+Lochfüllung aktivieren
+Ghosting-Filter aktivieren
+Verarbeitungszeit
+Speichernutzung
+Erstelldatum
+Software-Version
+Dateigröße
+System
+Software-Name
+Software-Version
+OS
+RAM
+CPU
+GPU(s)
+
+Mesh
+Ja
+Nein
+6 Minuten 10 Sekunden
+1.12 GB
+2022:09:19 02:24:20
+1.8.0.13794
+4.56 GB
+Agisoft Metashape Professional
+1.8.0 build 13794
+Windows 64 bit
+31.65 GB
+11th Gen Intel(R) Core(TM) i7-11800H @ 2.30GHz
+NVIDIA GeForce RTX 3070 Laptop GPU
+
+Seite 9
+
+
