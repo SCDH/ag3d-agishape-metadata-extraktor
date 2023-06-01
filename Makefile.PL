@@ -15,7 +15,7 @@ WriteMakefile(
     'Class::Tiny'     => 1.0008,
     'File::Slurp'     => 9999,
     'List::MoreUtils' => 0,       # Any version works
-    'Text.CSV'        => 2,
+    'Text::CSV'       => 2,
     'Mojolicious'     => 9,
     'File::Temp'      => 0.23,
   },
