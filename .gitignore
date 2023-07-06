@@ -6,7 +6,7 @@
 
 # Example files
 example/*
-!example/example.pdf
+!example/example?.pdf
 
 # Perl module artifacts
 Makefile

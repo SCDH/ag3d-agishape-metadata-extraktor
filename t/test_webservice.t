@@ -15,13 +15,13 @@ subtest 'Home page with upload form' => sub {
 subtest 'PDF metadata extraction' => sub {
 
   my $dir = curfile->sibling('test-data');
-  my $pdf = read_file $dir->child('example.pdf');
-  my $csv = read_file $dir->child('example.csv');
+  my $pdf = read_file $dir->child('example1.pdf');
+  my $csv = read_file $dir->child('example1.csv');
 
-  my $upload = {pdf => {content => $pdf, filename => 'example.pdf'}};
+  my $upload = {pdf => {content => $pdf, filename => 'example1.pdf'}};
   $t->post_ok('/pdf', form => $upload)->status_is(200)
     ->content_type_is('text/csv')
-    ->header_is("Content-Disposition" => "attachment; filename=example.pdf.csv;");
+    ->header_is("Content-Disposition" => "attachment; filename=example1.pdf.csv;");
   is $t->tx->res->body => $csv, 'Correct CSV content';
 };
 

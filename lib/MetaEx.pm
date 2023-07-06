@@ -9,12 +9,15 @@ no warnings 'experimental::signatures';
 use List::MoreUtils qw(any);
 use Text::CSV qw(csv);
 
+# Need to fetch this once at the beginning. DATA is empty after first read.
+our @IGNORE = map {chomp; $_} <DATA>;
+
 use Class::Tiny {
 
   # Regular attributes
   encoding  => 'UTF-8',
   separator => ';',
-  ignore    => sub {[map {chomp; $_} <DATA>]},
+  ignore    => \@IGNORE,
 
   # Processed attributes for accessible intermediate results
   input     => sub        {die "No input given!\n"},
@@ -96,6 +99,7 @@ __DATA__
 Allgemein
 Punktwolke
 Ausrichtungsparameter
+Optimierungsparameter
 Tiefenbilder
 Parameter für Tiefenbilderzeugung
 Dichte Punktwolke
