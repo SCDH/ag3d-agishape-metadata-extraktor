@@ -99,6 +99,7 @@ __DATA__
 Allgemein
 Punktwolke
 Ausrichtungsparameter
+Optimierungsparameter
 Tiefenbilder
 Parameter für Tiefenbilderzeugung
 Dichte Punktwolke
