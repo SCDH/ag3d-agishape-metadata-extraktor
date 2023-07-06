@@ -1,0 +1,666 @@
+Agisoft Metashape
+Verarbeitungsbericht
+02 May 2023
+
+Bezugsfläche
+>9
+9
+8
+7
+6
+5
+4
+3
+2
+1
+
+5m
+
+Fig. 1. Kamerapositionen und Bildüberlappung.
+
+Anzahl der Bilder:
+
+328
+
+Kamerastationen:
+
+328
+
+Flughöhe:
+
+6.45 m
+
+Verknüpfungspunkte:
+
+86,181
+
+Bodenauflösung:
+
+1.6 mm/pix
+
+Projektionen:
+
+1,108,444
+
+Deckungsbereich:
+
+1.06e+03 m²
+
+Reprojektionsfehler:
+
+0.517 pix
+
+Kameramodell
+
+Auflösung
+
+Brennweite Pixelgröße
+
+L2D-20c (12.29mm) 5280 x 3956 12.29 mm
+Tabelle 1. Kameras.
+
+Seite 2
+
+Vorkalibriert
+
+3.36 x 3.36 um Nein
+
+Kamera-Kalibrierung
+
+1 pix
+
+Fig. 2. Bildrestwerte für L2D-20c (12.29mm).
+
+L2D-20c (12.29mm)
+328 Bilder
+Typ
+Standard
+
+Auflösung
+5280 x 3956
+
+Brennweite
+12.29 mm
+
+Pixelgröße
+3.36 x 3.36 um
+
+Wert
+
+Fehler
+
+F
+
+Cx
+
+Cy
+
+K1
+
+K2
+
+K3
+
+P1
+
+P2
+
+F
+
+3714.57
+
+0.033
+
+1.00
+
+-0.02
+
+-0.76
+
+-0.02
+
+0.10
+
+-0.05
+
+-0.03
+
+-0.34
+
+Cx
+
+-0.106118
+
+0.011
+
+1.00
+
+0.01
+
+-0.01
+
+0.01
+
+-0.01
+
+0.82
+
+0.01
+
+Cy
+
+-9.70872
+
+0.016
+
+1.00
+
+-0.13
+
+0.01
+
+-0.04
+
+0.01
+
+0.68
+
+K1
+
+0.00812618
+
+1.6e-05
+
+1.00
+
+-0.96
+
+0.91
+
+-0.00
+
+-0.18
+
+K2
+
+-0.0200943
+
+5.1e-05
+
+1.00
+
+-0.98
+
+0.00
+
+0.04
+
+K3
+
+0.0397198
+
+5e-05
+
+1.00
+
+-0.01
+
+-0.06
+
+P1
+
+0.000408702
+
+9.7e-07
+
+1.00
+
+0.01
+
+P2
+
+-0.000601031
+
+1.1e-06
+
+1.00
+
+Tabelle 2. Kalibrierkoeffizienten und Korrelationsmatrix.
+
+Seite 3
+
+Kamerapositionen
+40 m
+32 m
+24 m
+16 m
+8m
+0m
+-8 m
+-16 m
+-24 m
+-32 m
+-40 m
+
+x1
+
+5m
+
+Fig. 3. Kamerapositionen und Fehlerabschätzung.
+Z Fehler ist durch Ellipsenfarbe dargestellt. X, Y Fehler sind durch Ellipsenform dargestellt.
+Geschätzte Kamerapositionen sind mit schwarzen Punkten markiert.
+
+Fehler X (m) Fehler Y (m) Fehler Z (m) XY Fehler (m) Gesamtfehler (m)
+1.57332
+
+1.132
+
+35.0838
+
+1.93824
+
+35.1373
+
+Tabelle 3. Durchschnittlicher Kamerapositions-Fehler.
+X - Rechtswert, Y - Hochwert, Z - Höhe.
+
+Seite 4
+
+Bodenpasspunkte
+6 mm
+4.8 mm
+3.6 mm
+2.4 mm
+target 49target 50
+
+1.2 mm
+0 mm
+-1.2 mm
+-2.4 mm
+-3.6 mm
+-4.8 mm
+-6 mm
+
+target 99
+
+x 100
+
+target 199
+target 100
+
+target 150target 149
+
+Passpunkte
+
+Prüfpunkte
+5m
+
+Fig. 4. Passpunktepositionen und Fehlerabschätzung.
+Z Fehler ist durch Ellipsenfarbe dargestellt. X, Y Fehler sind durch Ellipsenform dargestellt.
+Geschätzte Passpunktepositionen sind mit schwarzen Punkten, Kontrollpunkte mit Kreuzen
+markiert.
+
+Anzahl Fehler X (mm) Fehler Y (mm) Fehler Z (mm) XY Fehler (mm) Gesamt (mm)
+7
+
+5.64238
+
+3.37504
+
+3.54992
+
+6.57475
+
+Tabelle 4. Passpunkte RMSE.
+X - Rechtswert, Y - Hochwert, Z - Höhe.
+
+Seite 5
+
+7.4719
+
+Name
+
+Fehler X (mm) Fehler Y (mm) Fehler Z (mm) Gesamt (mm) Bild (pix)
+
+target 49
+
+9.51322
+
+-2.78772
+
+1.2834
+
+9.99599
+
+0.372 (11)
+
+target 50
+
+1.44464
+
+-2.12562
+
+-3.80387
+
+4.59072
+
+0.752 (16)
+
+target 99
+
+6.41531
+
+4.39163
+
+5.86706
+
+9.73987
+
+0.507 (19)
+
+target 100 -5.77666
+
+5.67831
+
+-4.27966
+
+9.16125
+
+0.504 (24)
+
+target 149 -3.28968
+
+-0.934534
+
+-2.99722
+
+4.54738
+
+0.334 (24)
+
+target 150 -1.89981
+
+-3.86037
+
+0.259324
+
+4.31034
+
+0.399 (19)
+
+target 199 -6.42726
+
+-0.375702
+
+3.21066
+
+7.19439
+
+1.319 (24)
+
+Gesamt
+
+3.37504
+
+3.54992
+
+7.4719
+
+0.710
+
+5.64238
+
+Tabelle 5. Passpunkte.
+X - Rechtswert, Y - Hochwert, Z - Höhe.
+
+Seite 6
+
+Digitales Höhenmodell
+163 m
+
+158 m
+
+5m
+
+Fig. 5. Rekonstruiertes digitales Höhenmodell.
+
+Auflösung:
+
+6.39 mm/pix
+
+Punktedichte:
+
+2.45 Punkte/cm²
+
+Seite 7
+
+Verarbeitungsparameter
+Allgemein
+Kameras
+Ausgerichtete Kameras
+Markierungen
+Koordinatensystem
+Drehwinkel
+Punktwolke
+Punkte
+Effektiver Reprojektionsfehler
+Max. Reprojektionsfehler
+Mittlere Schlüsselpunktgröße
+Punktfarben
+Schlüsselpunkte
+Durchschnittliche Verknüpfungspunkt-Multiplizität
+Ausrichtungsparameter
+Genauigkeit
+Allgemeine Vorauswahl
+Referenz Vorauswahl
+Schlüsselpunktlimit
+Verknüpfungspunktelimit
+Stationäre Verküpfungspunkte ausschließen
+Geführter Bildabgleich
+Adaptive Kamera-Modellanpassung
+Zeit für Abgleich
+Speichernutzung Abgleich
+Zeit für Ausrichtung
+Speichernutzung Ausrichtung
+Optimierungsparameter
+Parameter
+Adaptive Kamera-Modellanpassung
+Zeit für Optimierung
+Software-Version
+Dateigröße
+Tiefenbilder
+Anzahl
+Parameter für Tiefenbilderzeugung
+Qualität
+Filtermodus
+Max Nachbarn
+Verarbeitungszeit
+Speichernutzung
+Software-Version
+Dateigröße
+Dichte Punktwolke
+Punkte
+Punktfarben
+Parameter für Tiefenbilderzeugung
+Qualität
+Filtermodus
+Max Nachbarn
+
+328
+328
+7
+WGS 84 / UTM zone 38N (EPSG::32638)
+Gier, Nick, Roll
+86,181 von 105,281
+0.272133 (0.517397 pix)
+0.993668 (31.0557 pix)
+1.93433 pix
+3 Kanäle, uint8
+Nein
+14.1325
+Höchste
+Ja
+Quelle
+40,000
+4,000
+Nein
+Nein
+Ja
+9 Minuten 32 Sekunden
+3.18 GB
+2 Minuten 29 Sekunden
+275.42 MB
+f, cx, cy, k1-k3, p1, p2
+Nein
+9 Sekunden
+1.8.4.14856
+25.02 MB
+328
+Mittel
+Sanft
+16
+14 Minuten 12 Sekunden
+2.36 GB
+1.8.4.14856
+602.03 MB
+28,300,444
+3 Kanäle, uint8
+Mittel
+Sanft
+16
+
+Seite 8
+
+Verarbeitungszeit
+Speichernutzung
+Parameter für Erzeugung der dichten Punktwolke
+Verarbeitungszeit
+Speichernutzung
+Software-Version
+Dateigröße
+Modell
+Flächen
+Punkte
+Punktfarben
+Textur
+Parameter für Tiefenbilderzeugung
+Qualität
+Filtermodus
+Max Nachbarn
+Verarbeitungszeit
+Speichernutzung
+Rekonstruktionsparameter
+Oberflächenart
+Quelldaten
+Interpolation
+Strenge volumetrische Masken
+Verarbeitungszeit
+Speichernutzung
+Texturierungsparameter
+Abbildungsmodus
+Überlagerungsmodus
+Texturgröße
+Lochfüllung aktivieren
+Ghosting-Filter aktivieren
+Zeit für UV Mapping
+Speichernutzung UV-Mapping
+Zeit für Überlagerung
+Speichernutzung Überlagerung
+Software-Version
+Dateigröße
+DEM
+Größe
+Koordinatensystem
+Rekonstruktionsparameter
+Quelldaten
+Interpolation
+Verarbeitungszeit
+Speichernutzung
+Software-Version
+Dateigröße
+Orthomosaik
+Größe
+Koordinatensystem
+Farben
+Rekonstruktionsparameter
+Überlagerungsmodus
+Oberfläche
+Lochfüllung aktivieren
+Ghosting-Filter aktivieren
+
+14 Minuten 12 Sekunden
+2.36 GB
+18 Minuten 56 Sekunden
+4.17 GB
+1.8.4.14856
+409.25 MB
+3,632,409
+1,817,129
+3 Kanäle, uint8
+16,384 x 16,384, 4 Kanäle, uint8
+Mittel
+Sanft
+16
+14 Minuten 12 Sekunden
+2.36 GB
+Frei
+Dichte Punktwolke
+An
+Nein
+8 Minuten 5 Sekunden
+5.58 GB
+Allgemein
+Mosaik
+16,384
+Nein
+Nein
+1 Minute 19 Sekunden
+2.92 GB
+7 Minuten 59 Sekunden
+14.37 GB
+1.8.4.14856
+536.84 MB
+12,129 x 12,410
+WGS 84 / UTM zone 38N (EPSG::32638)
+Dichte Punktwolke
+An
+1 Minute 12 Sekunden
+309.57 MB
+1.8.4.14856
+88.22 MB
+22,722 x 21,911
+WGS 84 / UTM zone 38N (EPSG::32638)
+3 Kanäle, uint8
+Mosaik
+Mesh
+Ja
+Nein
+
+Seite 9
+
+Verarbeitungszeit
+Speichernutzung
+Software-Version
+Dateigröße
+System
+Software-Name
+Software-Version
+OS
+RAM
+CPU
+GPU(s)
+
+8 Minuten 42 Sekunden
+1.74 GB
+1.8.4.14856
+8.49 GB
+Agisoft Metashape Professional
+1.7.2 build 12070
+Windows 64 bit
+63.95 GB
+Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz
+GeForce RTX 2070
+
+Seite 10
+
+
