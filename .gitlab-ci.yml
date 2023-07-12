@@ -37,7 +37,7 @@ test:
   image:
     name: perl:5.36-bullseye
   script:
-      - apt update
+    - apt update
     - apt install -y poppler-utils
     - cpanm -nq --installdeps .
     - perl Makefile.PL
