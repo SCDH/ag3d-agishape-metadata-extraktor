@@ -2,6 +2,7 @@ stages:
   - build
   - test
   - push
+  - helm
 
 include:
   - project: 'ULB/it-service/base-images/ci-template'
@@ -60,3 +61,14 @@ push-container-gitlab:
 push-container-harbour:
   rules:
     - !reference [.default_rules, rules]
+
+child-helm-chart:
+  stage: helm
+  rules:
+    - if: $CI_COMMIT_REF_NAME != "main"
+      when: never
+    - changes:
+        - helm-chart/*
+  trigger:
+    include:
+      - local: .helm-gitblab-ci.yml
