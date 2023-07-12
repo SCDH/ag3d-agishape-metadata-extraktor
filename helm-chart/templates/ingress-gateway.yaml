@@ -1,0 +1,42 @@
+{{- $nameSpace := .Release.Namespace }}
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: {{ $nameSpace }}-{{ include "metadata-extraktor.name" . }}
+  labels:
+  {{- include "metadata-extraktor.selectorLabels" . | nindent 4 }}
+  annotations:
+    # Annotation to introduce a CNAME for the hosts below to the NIC Entry for
+    # istio.ms1.k8s.wwu.de (istio ingress on region ms1)
+    {{- include "ulb.environment" . | nindent 6 }}
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+      hosts:
+        # hosts are restricted and need to be apply for in the project application.
+        # hosts has to be prefixed with namespace/
+        {{- range .Values.network.hosts }}
+        - "{{ $nameSpace }}/{{ .host }}"
+        {{- end }}
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        minProtocolVersion: TLSV1_3
+        # credentialName has to be prefixed with namespace--
+        credentialName: {{ $nameSpace }}--{{ include "metadata-extraktor.name" . }}-certificate
+      hosts:
+        # hosts are restricted and need to be apply for in the project application.
+        # hosts has to be prefixed with namespace/
+        {{- range .Values.network.hosts }}
+        - "{{ $nameSpace }}/{{ .host }}"
+        {{- end }}

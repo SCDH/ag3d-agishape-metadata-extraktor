@@ -1,0 +1,16 @@
+apiVersion: v2
+name: metadata-extraktor
+description: Extract data following a certain model from PDFs and create CSV from it.
+keywords:
+  - scdh
+home: https://zivgitlab.uni-muenster.de/ULB/SCDH-Kooperation/metadata-extraktor
+maintainers:
+  - name: Sebastian Stimberg
+    email: sebastian.stimberg@uni-muenster.de
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+annotations:
+  partof: scdh
+  createdby: MircoWestermeier
+  maintainedby: ULB-Digitale-Dienste

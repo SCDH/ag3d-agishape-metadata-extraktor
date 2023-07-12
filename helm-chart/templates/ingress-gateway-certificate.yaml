@@ -1,0 +1,38 @@
+{{- $nameSpace := .Release.Namespace }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ $nameSpace }}-{{ include "metadata-extraktor.name" . }}
+  labels:
+    {{- include "metadata-extraktor.selectorLabels" . | nindent 4 }}
+  annotations:
+    cert-manager.io/issue-temporary-certificate: "true"
+    argocd.argoproj.io/sync-options: Prune=false
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+spec:
+  # commonName and dnsNames are restricted and need to be apply for in the
+  # project application, if the wwuit-acme cluster issuer is used.
+  {{- range .Values.network.hosts }}
+  commonName: "{{ .host }}"
+  dnsNames:
+    - "{{ .host }}"
+  {{- end }}
+  # Cluster Issuer with which certificates from the DFN can be requested.
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: wwuit-acme
+  privateKey:
+    rotationPolicy: Always
+    algorithm: ECDSA
+    size: 256
+  secretName: {{ include "metadata-extraktor.name" . }}-certificate
+  subject:
+    countries:
+      - DE
+    provinces:
+      - Nordrhein-Westfalen
+    localities:
+      - Muenster
+    organizations:
+      - Westfaelische Wilhelms-Universitaet Muenster

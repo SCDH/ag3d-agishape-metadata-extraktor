@@ -1,0 +1,24 @@
+{{- $nameSpace := .Release.Namespace }}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ $nameSpace }}-{{ include "metadata-extraktor.name" . }}
+  labels:
+    {{- include "metadata-extraktor.selectorLabels" . | nindent 4 }}
+spec:
+  hosts:
+    # hosts are restricted and need to be apply for in the project application.
+    {{- range .Values.network.hosts }}
+    - "{{ .host }}"
+    {{- end }}
+  gateways:
+    - {{ $nameSpace }}-{{ include "metadata-extraktor.name" . }}
+  http:
+    - match:
+      - uri:
+          prefix: "/"
+      route:
+        - destination:
+            host: {{ include "metadata-extraktor.name" . }}
+            port:
+              number: 3000

@@ -1,0 +1,16 @@
+---
+{{- if .Values.restrictAccess.enabled }}
+{{- $nameSpace := .Release.Namespace }}
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: {{ $nameSpace }}-{{ include "metadata-extraktor.name" . }}-remoteips
+  labels:
+    {{- include "metadata-extraktor.selectorLabelsSideCar" . | nindent 4 }}
+spec:
+  action: ALLOW
+  rules:
+    - from:
+        - source:
+            remoteIpBlocks: {{ toYaml .Values.restrictAccess.cidr_set | nindent 15 }}
+{{- end }}

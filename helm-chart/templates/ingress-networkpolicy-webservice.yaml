@@ -1,0 +1,21 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: {{ include "metadata-extraktor.name" . }}
+spec:
+  endpointSelector:
+    matchLabels:
+      {{- include "metadata-extraktor.selectorLabelsNetwork" . | nindent 6 }}
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            k8s:app: istio-ingressgateway
+            k8s:istio: ingressgateway
+            k8s:name: istio-ingressgateway
+            io.cilium.k8s.policy.cluster: ms1
+            k8s:io.kubernetes.pod.namespace: istio-ingressgateway
+      toPorts:
+        - ports:
+# Port has to be set to Pod Port
+            - port: "3000"
+  egress: []
