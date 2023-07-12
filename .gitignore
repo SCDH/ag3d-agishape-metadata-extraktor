@@ -27,3 +27,4 @@ pod2htm*.tmp
 pm_to_blib
 MetaEx-*
 MetaEx-*.tar.gz
+/helm-chart/installs/

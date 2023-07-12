@@ -1,10 +1,62 @@
-image:
-  name: perl:5.36-bullseye
+stages:
+  - build
+  - test
+  - push
+
+include:
+  - project: 'ULB/it-service/base-images/ci-template'
+    ref: 'main'
+    file: 'default.yml'
+  - project: 'ULB/it-service/base-images/ci-template'
+    ref: 'main'
+    file: 'variables.yml'
+  - project: 'ULB/it-service/base-images/ci-template'
+    ref: 'main'
+    file: 'build/build-container-without-cache.yml'
+  - project: 'ULB/it-service/base-images/ci-template'
+    ref: 'main'
+    file: 'security/security.yml'
+  - project: 'ULB/it-service/base-images/ci-template'
+    ref: 'main'
+    file: 'security/security-container.yml'
+  - project: 'ULB/it-service/base-images/ci-template'
+    ref: 'main'
+    file: 'push/push-container-gitlab.yml'
+  - project: 'ULB/it-service/base-images/ci-template'
+    ref: 'main'
+    file: 'push/push-container-harbour.yml'
+
+.default_rules:
+  rules:
+    - if: $CI_COMMIT_REF_NAME != "main"
+      when: never
+    - changes:
+      - Dockerfile
 
 test:
+  image:
+    name: perl:5.36-bullseye
   script:
-    - apt update
+      - apt update
     - apt install -y poppler-utils
     - cpanm -nq --installdeps .
     - perl Makefile.PL
     - make test
+
+build-container-without-cache:
+  variables:
+    CI_DOCKERFILE_PATH: "./"
+  rules:
+    - !reference [.default_rules, rules]
+
+container_scanning:
+  rules:
+    - !reference [.default_rules, rules]
+
+push-container-gitlab:
+  rules:
+    - !reference [.default_rules, rules]
+
+push-container-harbour:
+  rules:
+    - !reference [.default_rules, rules]
