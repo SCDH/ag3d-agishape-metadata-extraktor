@@ -27,8 +27,8 @@ lint-chart-certmanager:
     # Log in to the Helm registry
     - echo "$HARBOR_PASSWORD" | helm registry login "${HARBOR_URL}" --username "${HARBOR_USERNAME}" --password-stdin
   script:
-    - helm dependency update
-    - helm lint certmanager
+    - helm dependency update helm-chart
+    - helm lint helm-chart
   after_script:
     - helm registry logout "${HARBOR_URL}"
 
