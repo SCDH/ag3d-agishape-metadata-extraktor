@@ -71,4 +71,4 @@ child-helm-chart:
         - helm-chart/*
   trigger:
     include:
-      - local: .helm-gitblab-ci.yml
+      - local: .helm-gitlab-ci.yml
