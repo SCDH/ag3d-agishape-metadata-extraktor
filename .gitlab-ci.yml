@@ -40,7 +40,8 @@ variables:
 
 .default_rules_prod:
   rules:
-    - if: $CI_COMMIT_REF_NAME != "prod"
+    - !reference [.default_rules, rules]
+    - if: $CI_COMMIT_BRANCH != "prod"
       when: never
 
 test:
@@ -95,7 +96,7 @@ staging dry-run:
     - kubectl config use-context $KUBE_CONTEXT && chmod 0400 $KUBECONFIG
   script:
     - helm dependency update metadata-extraktor
-    - helm upgrade --install metadata-extraktor metadata-extraktor -n=scdh-universe -f installs/stage-scdh-universe.yaml --set image.imageCredentials.username=$HARBOR_USERNAME --set image.imageCredentials.password=$HARBOR_PASSWORD --dry-run  > /dev/null
+    - helm upgrade --install metadata-extraktor ./metadata-extraktor -n=scdh-universe -f installs/stage-scdh-universe.yaml --set image.imageCredentials.username=$HARBOR_USERNAME --set image.imageCredentials.password=$HARBOR_PASSWORD --dry-run  > /dev/null
   after_script:
     - helm registry logout "${HARBOR_URL}"
 
@@ -116,6 +117,47 @@ staging deploy:
     - kubectl config use-context $KUBE_CONTEXT && chmod 0400 $KUBECONFIG
   script:
     - helm dependency update metadata-extraktor
-    - helm upgrade --install metadata-extraktor metadata-extraktor -n=scdh-universe -f installs/stage-scdh-universe.yaml --set image.imageCredentials.username=$HARBOR_USERNAME --set image.imageCredentials.password=$HARBOR_PASSWORD --dry-run  > /dev/null
+    - helm upgrade --install metadata-extraktor metadata-extraktor/ -n=scdh-universe -f installs/stage-scdh-universe.yaml --set image.imageCredentials.username=$HARBOR_USERNAME --set image.imageCredentials.password=$HARBOR_PASSWORD --dry-run  > /dev/null
+  after_script:
+    - helm registry logout "${HARBOR_URL}"
+
+production dry-run:
+  stage: deploy
+  needs:
+    - sign-container-harbor
+    - helm lint
+  environment:
+    name: production
+  variables:
+    KUBE_CONTEXT: SCDH/ag-3d/metadata-extraktor:scdh-universe-prod
+  rules:
+    - !reference [.default_rules_prod, rules]
+  before_script:
+    - echo "$HARBOR_PASSWORD" | helm registry login "${HARBOR_URL}" --username "${HARBOR_USERNAME}" --password-stdin
+    - kubectl config use-context $KUBE_CONTEXT && chmod 0400 $KUBECONFIG
+  script:
+    - helm dependency update metadata-extraktor
+    - helm upgrade --install metadata-extraktor metadata-extraktor/ -n=scdh-universe -f installs/stage-scdh-universe.yaml --set image.imageCredentials.username=$HARBOR_USERNAME --set image.imageCredentials.password=$HARBOR_PASSWORD --dry-run  > /dev/null
+  after_script:
+    - helm registry logout "${HARBOR_URL}"
+
+production deploy:
+  stage: deploy
+  needs:
+    - sign-container-harbor
+    - helm lint
+    - production dry-run
+  environment:
+    name: production
+  variables:
+    KUBE_CONTEXT: SCDH/ag-3d/metadata-extraktor:scdh-universe-prod
+  rules:
+    - !reference [.default_rules_prod, rules]
+  before_script:
+    - echo "$HARBOR_PASSWORD" | helm registry login "${HARBOR_URL}" --username "${HARBOR_USERNAME}" --password-stdin
+    - kubectl config use-context $KUBE_CONTEXT && chmod 0400 $KUBECONFIG
+  script:
+    - helm dependency update metadata-extraktor
+    - helm upgrade --install metadata-extraktor metadata-extraktor/ -n=scdh-universe -f installs/prod-scdh-universe.yaml --set image.imageCredentials.username=$HARBOR_USERNAME --set image.imageCredentials.password=$HARBOR_PASSWORD --dry-run  > /dev/null
   after_script:
     - helm registry logout "${HARBOR_URL}"
