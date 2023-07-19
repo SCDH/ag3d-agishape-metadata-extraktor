@@ -27,7 +27,7 @@ include:
     file: 'push/push-container-gitlab.yml'
   - project: 'ULB/it-service/base-images/ci-template'
     ref: 'main'
-    file: 'push/push-container-harbour.yml'
+    file: 'push/push-signed-container-harbor.yml'
   - project: 'ULB/it-service/base-images/ci-template'
     ref: 'main'
     file: 'pipelines/helm-charts.yml'
@@ -70,3 +70,5 @@ push-container-gitlab:
 push-container-harbour:
   rules:
     - !reference [.default_rules, rules]
+
+
