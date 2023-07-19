@@ -1,6 +1,6 @@
 stages:
-  - test
   - build
+  - test
   - push
   - deploy
 
@@ -79,11 +79,11 @@ sign-container-harbor:
   rules:
     - !reference [.default_rules, rules]
 
-dry-run:staging:deploy:
+staging dry-run:
   stage: deploy
   needs:
     - sign-container-harbor
-    - helm-lint-chart
+    - helm lint
   environment:
     name: staging
   variables:
@@ -99,12 +99,12 @@ dry-run:staging:deploy:
   after_script:
     - helm registry logout "${HARBOR_URL}"
 
-deploy:staging:deploy:
+staging deploy:
   stage: deploy
   needs:
     - sign-container-harbor
-    - helm-lint-chart
-    - dry-run:staging:deploy
+    - helm lint
+    - staging dry-run
   environment:
     name: staging
   variables:
