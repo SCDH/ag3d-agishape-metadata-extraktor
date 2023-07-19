@@ -88,9 +88,14 @@ prepare-for-signing:
 
 sign-container-harbor:
   needs:
-    - build-container-with-cache
+    - push-container-harbor
   rules:
     - !reference [.default_rules, rules]
+
+helm build:
+  rules:
+    - changes:
+      - metadata-extraktor/../.
 
 staging dry-run:
   stage: deploy
