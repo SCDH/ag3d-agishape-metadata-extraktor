@@ -98,3 +98,24 @@ dry-run:staging:deploy:
     - helm upgrade --install metadata-extraktor metadata-extraktor -n=scdh-universe -f installs/stage-scdh-universe.yaml --set image.imageCredentials.username=$HARBOR_USERNAME --set image.imageCredentials.password=$HARBOR_PASSWORD --dry-run  > /dev/null
   after_script:
     - helm registry logout "${HARBOR_URL}"
+
+deploy:staging:deploy:
+  stage: deploy
+  needs:
+    - sign-container-harbor
+    - helm-lint-chart
+    - dry-run:staging:deploy
+  environment:
+    name: staging
+  variables:
+    KUBE_CONTEXT: SCDH/ag-3d/metadata-extraktor:scdh-universe-stage
+  rules:
+    - !reference [.default_rules, rules]
+  before_script:
+    - echo "$HARBOR_PASSWORD" | helm registry login "${HARBOR_URL}" --username "${HARBOR_USERNAME}" --password-stdin
+    - kubectl config use-context $KUBE_CONTEXT && chmod 0400 $KUBECONFIG
+  script:
+    - helm dependency update metadata-extraktor
+    - helm upgrade --install metadata-extraktor metadata-extraktor -n=scdh-universe -f installs/stage-scdh-universe.yaml --set image.imageCredentials.username=$HARBOR_USERNAME --set image.imageCredentials.password=$HARBOR_PASSWORD --dry-run  > /dev/null
+  after_script:
+    - helm registry logout "${HARBOR_URL}"
