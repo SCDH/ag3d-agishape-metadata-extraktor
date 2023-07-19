@@ -2,7 +2,9 @@ stages:
   - build
   - test
   - push
-  - helm
+  - helm-lint-chart
+  - helm-build-chart
+  - push-helm-chart
   - dry-run
   - deploy
 
