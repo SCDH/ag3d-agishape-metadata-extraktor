@@ -1,0 +1,19 @@
+observability:
+  logging:
+    level: debug
+    grpc_level: warn
+
+gitops:
+  manifest_projects:
+  - id: ULB/it-service/kubernetes/gitlab-agent
+    ref: 
+      branch: main
+    default_namespace: scdh-universe
+    paths:
+      - glob: '/manifests/*.{yaml,yml,json}'
+    reconcile_timeout: 360s
+    dry_run_strategy: none
+    prune: true
+    prune_timeout: 360s
+    prune_propagation_policy: foreground
+    inventory_policy: must_match
