@@ -3,6 +3,8 @@ stages:
   - test
   - push
   - helm
+  - dry-run
+  - deploy
 
 include:
   - project: 'ULB/it-service/base-images/ci-template'
@@ -26,6 +28,13 @@ include:
   - project: 'ULB/it-service/base-images/ci-template'
     ref: 'main'
     file: 'push/push-container-harbour.yml'
+  - project: 'ULB/it-service/base-images/ci-template'
+    ref: 'main'
+    file: 'pipelines/helm-charts.yml'
+
+variables:
+  HELM_CHART_NAME: "metadata-extraktor"
+  HELM_BUILD_DIR: "$CI_PROJECT_DIR/build"
 
 .default_rules:
   rules:
@@ -61,14 +70,3 @@ push-container-gitlab:
 push-container-harbour:
   rules:
     - !reference [.default_rules, rules]
-
-child-helm-chart:
-  stage: helm
-  rules:
-    - if: $CI_COMMIT_REF_NAME != "main"
-      when: never
-    - changes:
-        - helm-chart/*
-  trigger:
-    include:
-      - local: .helm-gitlab-ci.yml
