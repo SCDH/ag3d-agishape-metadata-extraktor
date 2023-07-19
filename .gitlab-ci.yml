@@ -1,11 +1,8 @@
 stages:
-  - build
   - test
+  - build
   - push
-  - helm-lint-chart
-  - helm-build-chart
-  - push-helm-chart
-  - staging
+  - deploy
 
 include:
   - project: 'ULB/it-service/base-images/ci-template'
@@ -40,7 +37,7 @@ variables:
 .default_rules:
   rules:
     - when: always
-    
+
 .default_rules_prod:
   rules:
     - if: $CI_COMMIT_REF_NAME != "prod"
@@ -82,8 +79,11 @@ sign-container-harbor:
   rules:
     - !reference [.default_rules, rules]
 
-dry-run:staging:
-  stage: staging
+dry-run:staging:deploy:
+  stage: deploy
+  needs:
+    - sign-container-harbor
+    - helm-lint-chart
   environment:
     name: staging
   variables:
@@ -91,6 +91,10 @@ dry-run:staging:
   rules:
     - !reference [.default_rules, rules]
   before_script:
+    - echo "$HARBOR_PASSWORD" | helm registry login "${HARBOR_URL}" --username "${HARBOR_USERNAME}" --password-stdin
     - kubectl config use-context $KUBE_CONTEXT && chmod 0400 $KUBECONFIG
   script:
+    - helm dependency update metadata-extraktor
     - helm upgrade --install metadata-extraktor metadata-extraktor -n=scdh-universe -f installs/stage-scdh-universe.yaml --set image.imageCredentials.username=$HARBOR_USERNAME --set image.imageCredentials.password=$HARBOR_PASSWORD --dry-run  > /dev/null
+  after_script:
+    - helm registry logout "${HARBOR_URL}"
