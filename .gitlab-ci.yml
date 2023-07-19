@@ -67,8 +67,14 @@ push-container-gitlab:
   rules:
     - !reference [.default_rules, rules]
 
-push-container-harbour:
+push-container-harbor:
   rules:
     - !reference [.default_rules, rules]
 
+prepare-for-signing:
+  rules:
+    - !reference [.default_rules, rules]
 
+sign-container-harbor:
+  rules:
+    - !reference [.default_rules, rules]
