@@ -39,7 +39,8 @@ variables:
 
 .default_rules:
   rules:
-
+    - when: always
+    
 .default_rules_prod:
   rules:
     - if: $CI_COMMIT_REF_NAME != "prod"
