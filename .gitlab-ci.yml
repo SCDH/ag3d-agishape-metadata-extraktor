@@ -97,6 +97,11 @@ helm build:
     - changes:
       - metadata-extraktor/../.
 
+helm push:
+  rules:
+    - changes:
+      - metadata-extraktor/../.
+
 staging dry-run:
   stage: deploy
   needs:
