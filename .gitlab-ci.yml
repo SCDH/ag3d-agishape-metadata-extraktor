@@ -5,8 +5,7 @@ stages:
   - helm-lint-chart
   - helm-build-chart
   - push-helm-chart
-  - dry-run
-  - deploy
+  - staging
 
 include:
   - project: 'ULB/it-service/base-images/ci-template'
@@ -40,10 +39,11 @@ variables:
 
 .default_rules:
   rules:
-    - if: $CI_COMMIT_REF_NAME != "main"
+
+.default_rules_prod:
+  rules:
+    - if: $CI_COMMIT_REF_NAME != "prod"
       when: never
-    - changes:
-      - Dockerfile
 
 test:
   image:
@@ -80,3 +80,16 @@ prepare-for-signing:
 sign-container-harbor:
   rules:
     - !reference [.default_rules, rules]
+
+dry-run:staging:
+  stage: staging
+  environment:
+    name: staging
+  variables:
+    KUBE_CONTEXT: SCDH/ag-3d/metadata-extraktor:scdh-universe-stage
+  rules:
+    - !reference [.default_rules, rules]
+  before_script:
+    - kubectl config use-context $KUBE_CONTEXT && chmod 0400 $KUBECONFIG
+  script:
+    - helm upgrade --install metadata-extraktor metadata-extraktor -n=scdh-universe -f installs/stage-scdh-universe.yaml --set image.imageCredentials.username=$HARBOR_USERNAME --set image.imageCredentials.password=$HARBOR_PASSWORD --dry-run  > /dev/null

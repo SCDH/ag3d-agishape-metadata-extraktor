@@ -1,0 +1,59 @@
+# Default values for metadata-extraktor.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+network:
+  hosts:
+    - host: "scdh-services-staging.uni-muenster.de"
+    #host:
+  ## Environment can be "prod-ms1","prod-ms2","staging-ms1","staging-ms2"
+  environment: staging-ms1
+
+#Restrict access to application on remote ip cidr
+restrictAccess:
+  enabled: true
+  #cidr from addresses that have access
+  cidr_set: ["10.10.0.0/16"]
+
+replicaCount: 1
+
+image:
+  repository: harbor.uni-muenster.de/scdh-ag-3d-metadata-extraktor/metadata-extraktor
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+  imageCredentials:
+    registry: harbor.uni-muenster.de
+
+nameOverride: ""
+fullnameOverride: ""
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 1Gi
+    ephemeral-storage: 200Mi
+  requests:
+    cpu: 250m
+    memory: 1Gi
+    ephemeral-storage: 200Mi
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
