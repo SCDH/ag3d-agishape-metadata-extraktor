@@ -54,21 +54,31 @@ test:
     - perl Makefile.PL
     - make test
 
-build-container-without-cache:
+build-container-with-cache:
   variables:
     CI_DOCKERFILE_PATH: "./"
   rules:
     - !reference [.default_rules, rules]
 
 container_scanning:
+  needs:
+    - build-container-with-cache
   rules:
     - !reference [.default_rules, rules]
 
 push-container-gitlab:
+  needs:
+    - container_scanning
+    - kics-iac-sast
+    - secret_detection
   rules:
     - !reference [.default_rules, rules]
 
 push-container-harbor:
+  needs:
+    - container_scanning
+    - kics-iac-sast
+    - secret_detection
   rules:
     - !reference [.default_rules, rules]
 
@@ -77,6 +87,8 @@ prepare-for-signing:
     - !reference [.default_rules, rules]
 
 sign-container-harbor:
+  needs:
+    - build-container-with-cache
   rules:
     - !reference [.default_rules, rules]
 
