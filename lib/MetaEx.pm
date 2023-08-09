@@ -98,8 +98,11 @@ sub to_csv($self) {
 __DATA__
 Allgemein
 Punktwolke
+Punktattribute
+Punktklassen
 Ausrichtungsparameter
 Optimierungsparameter
+Verknüpfungspunkte
 Tiefenbilder
 Parameter für Tiefenbilderzeugung
 Dichte Punktwolke
