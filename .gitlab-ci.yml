@@ -7,10 +7,10 @@ stages:
 include:
   - project: 'ULB/it-service/base-images/ci-template'
     ref: 'main'
-    file: 'defaults/dind.yml'
+    file: 'variables.yml'
   - project: 'ULB/it-service/base-images/ci-template'
     ref: 'main'
-    file: 'variables.yml'
+    file: 'defaults/dind.yml'
   - project: 'ULB/it-service/base-images/ci-template'
     ref: 'main'
     file: 'build/build-container-with-cache.yml'
