@@ -1,6 +1,6 @@
-# Extract metadata workflow
+# Extract Agisoft Metashape metadata PDF workflow
 
-Extract data following a certain model from PDFs and create CSV from it.
+Extract data from Agisoft Metashape PDF reports and create CSV from it.
 
 There are two workflows available:
 
