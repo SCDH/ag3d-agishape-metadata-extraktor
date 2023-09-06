@@ -1,0 +1,25 @@
+name: Test
+
+on: [push, workflow_dispatch]
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: perl:5.38
+    steps:
+
+      - name: Prepare external tools
+        run: |
+          apt update
+          apt install -y poppler-utils
+
+      - name: Checkout repository content
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: cpanm -nq --installdeps .
+      
+      - name: Run tests
+        run: prove -lv
