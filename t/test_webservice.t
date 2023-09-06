@@ -4,6 +4,7 @@ use Test::Mojo;
 use File::Slurp;
 
 my $t = Test::Mojo->new(curfile->dirname->sibling('webservice.pl'));
+$t->app->log->level('warn');
 
 subtest 'Home page with upload form' => sub {
   $t->get_ok('/')->status_is(200)
